@@ -8,8 +8,11 @@ export default function MenuItem({ blok }) {
         <div className="menu-item-image-wrapper">
           <Image 
             src={`${blok.image.filename}/m/400x400`} 
-            alt={blok.image.alt || blok.name}
+            alt={blok.image.alt || blok.name || 'Menu item'}
+            width={400}
+            height={400}
             className="menu-item-image"
+            style={{ objectFit: 'cover' }}
           />
         </div>
       )}
