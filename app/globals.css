@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1a1412;
+  --background: #faf9f7;
   --foreground: #2d2420;
   --primary: #6f4e37;
   --primary-dark: #5a3d2b;
@@ -20,7 +20,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #8b756e;
+    --background: #1a1412;
     --foreground: #f5f5f5;
     --border: #3d2f28;
   }
