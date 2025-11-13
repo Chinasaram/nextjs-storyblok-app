@@ -245,30 +245,7 @@ body {
 }
 
 /* Feature Component */
-.feature {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  transition: transform 0.3s ease;
-}
 
-.feature:hover {
-  transform: translateY(-5px);
-}
-
-.feature-symbol {
-  margin-bottom: 1rem;
-}
-
-.feature-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0;
-  color: #333;
-}
 .feature {
   padding: 2rem;
   background: white;
@@ -276,6 +253,14 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-align: center;
   border: 1px solid var(--border);
+}
+
+.feature-symbol {
+  margin-bottom: 1rem;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
 }
 
 .feature span {
