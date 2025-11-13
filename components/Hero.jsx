@@ -8,7 +8,8 @@ export default function Hero({ blok }) {
 
   return (
     <section 
-      className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden w-screen -ml-[50vw] -mr-[50vw] left-[50%] right-[50%]"
+      className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden"
+      style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}
       {...storyblokEditable(blok)}
     >
       {/* Background Image */}
