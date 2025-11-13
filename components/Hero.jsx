@@ -17,14 +17,18 @@ export default function Hero({ blok }) {
           <Image 
             src={backgroundImageUrl}
             alt={blok.background_image?.alt || blok.title || 'Hero background'}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            quality={80}
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/60 z-10" />
         </div>
       )}
       
       {/* Hero Content */}
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
+      <div className="relative z-20 text-center px-4 max-w-3xl mx-auto">
         {/* Optional Icon */}
         {blok.icon && (
           <div className="flex justify-center mb-6">
