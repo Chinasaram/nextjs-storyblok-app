@@ -245,22 +245,13 @@ body {
 }
 
 /* Feature Component */
-
 .feature {
   padding: 2rem;
-  background: white;
+  background: rgb(249, 162, 162);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-align: center;
   border: 1px solid var(--border);
-}
-
-.feature-symbol {
-  margin-bottom: 1rem;
-}
-
-.feature:hover {
-  transform: translateY(-5px);
 }
 
 .feature span {
