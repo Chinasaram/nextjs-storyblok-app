@@ -20,7 +20,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1a1412;
+    --background: #8b756e;
     --foreground: #f5f5f5;
     --border: #3d2f28;
   }
@@ -80,7 +80,6 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 /* Hero content needs to be above background */
@@ -246,6 +245,30 @@ body {
 }
 
 /* Feature Component */
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature-symbol {
+  margin-bottom: 1rem;
+}
+
+.feature-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
 .feature {
   padding: 2rem;
   background: white;
