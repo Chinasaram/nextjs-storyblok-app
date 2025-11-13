@@ -1,5 +1,4 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
-import Image from "next/image";
 
 export default function Hero({ blok }) {
   const backgroundImageUrl = blok.background_image?.filename 
@@ -8,73 +7,36 @@ export default function Hero({ blok }) {
 
   return (
     <section 
-      className="hero-section" 
+      className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden"
       {...storyblokEditable(blok)}
-      style={{
-        position: 'relative',
-        minHeight: '600px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }}
     >
       {/* Background Image */}
       {backgroundImageUrl && (
         <div 
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 0
-          }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImageUrl})` }}
         >
-          <Image 
-            src={backgroundImageUrl} 
-            alt={blok.background_image.alt || blok.title || 'Hero background'}
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-            quality={80}
-          />
-          {/* Optional overlay for better text readability */}
-          <div 
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              backgroundColor: 'rgba(0, 0, 0, 0.4)',
-              zIndex: 1
-            }}
-          />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
       )}
-
+      
       {/* Hero Content */}
-      <div 
-        className="hero-content"
-        style={{
-          position: 'relative',
-          zIndex: 2,
-          textAlign: 'center',
-          color: 'white',
-          maxWidth: '800px',
-          padding: '2rem'
-        }}
-      >
-        <h1 className="hero-title">{blok.title}</h1>
-        <p className="hero-subtitle">{blok.subtitle}</p>
-        {blok.button_text && (
-          <a 
-            href={blok.button_link?.cached_url || '#'} 
-            className="hero-button"
-          >
-            {blok.button_text}
-          </a>
+      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
+        {/* Optional Icon */}
+        {blok.icon && (
+          <div className="flex justify-center mb-6">
+            <span className="text-6xl">{blok.icon}</span>
+          </div>
+        )}
+        
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight">
+          {blok.title}
+        </h1>
+        
+        {blok.subtitle && (
+          <p className="text-xl md:text-2xl text-white/90 font-light">
+            {blok.subtitle}
+          </p>
         )}
       </div>
     </section>
