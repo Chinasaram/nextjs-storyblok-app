@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Coffee Shop Website
+
+A modern coffee shop website built with Next.js and Storyblok CMS. This project demonstrates how to integrate Storyblok as a headless CMS with Next.js for easy content management.
+
+## What This App Does
+
+This is a coffee shop website where all content is managed through Storyblok CMS. You can:
+
+- Display a hero section with background images
+- Organize menu items
+- Show featured information in grid layouts
+- Update all content without touching code
+
+## Tech Stack
+
+- Next.js 16.0.2
+- React 19.2.0
+- Storyblok React SDK 5.4.18
+- Tailwind CSS 4
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- Storyblok account
+
+### Installation
+
+1. Clone the repository
+
+2. Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN=your_storyblok_preview_token
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to view the site.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## How It Works with Storyblok
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Content Structure
 
-## Learn More
+The app fetches content from Storyblok using the API. Content is organized in a "home" story that contains nested components.
 
-To learn more about Next.js, take a look at the following resources:
+### Storyblok Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All components are registered in `lib/storyblok.js` and map to React components:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Page
+- Hero
+- MenuSection
+- MenuItem
+- Grid
+- Feature
+- Teaser
 
-## Deploy on Vercel
+### Setting Up in Storyblok
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create each component schema in the Storyblok Block Library with the fields listed above
+2. Create a new story called "home" with content type "page"
+3. Add components to build your page structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Example:
+
+```
+Home (page)
+├── Hero (banner with coffee shop photo)
+├── MenuSection (Coffee category)
+│   ├── MenuItem (Espresso)
+│   └── MenuItem (Latte)
+└── Grid (features like hours, location)
+```
+
+### How Content is Fetched
+
+Content is fetched server-side in `app/page.js`:
+
+```javascript
+const { data } = await storyblokApi.get('cdn/stories/home', { 
+  version: 'draft' 
+});
+```
+
+The `StoryblokStory` component then renders all nested components automatically.
+
+## Development
+
+Enable live preview:
+
+1. In Storyblok, go to Settings → Visual Editor
+2. Set preview URL to `http://localhost:3000` or your vercel url
+3. Changes in Storyblok will update in real-time because the `storyblokEditable` function is used in each component
+
+## Deployment
+
+Deploy to Vercel:
+
+1. Push code to GitHub
+2. Import repository in Vercel
+3. Add environment variable: `NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN`
+4. Deploy
