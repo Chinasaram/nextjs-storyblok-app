@@ -29,7 +29,7 @@ This is a coffee shop website where all content is managed through Storyblok CMS
 
 1. Clone the repository
 
-2. Create a `.env.local` file:
+2. Create a `.env` file:
 
 ```env
 NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN=your_storyblok_preview_token
